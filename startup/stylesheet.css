@@ -1,3 +1,25 @@
-a:hover, a:visited:hover{
+*{
+
+	margin: 0; font-family: Arial;
+	line-height: 20pt;
+}
+
+header{
+	background-color:#686868;
+	padding: 10px;
+}
+footer{
+	padding:20px;
+}
+a:hover{
+	font-size: 17px;
 	font-weight: bold;
+}
+h1{
+	color:white;
+	font-size: 36px;
+	font-family: Courier;
+}
+section{
+	margin: 50px;
 }
