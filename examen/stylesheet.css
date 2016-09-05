@@ -1,0 +1,24 @@
+*{
+	margin:0;
+	font-family:"Trebuchet MS";
+	font-height:20px;
+}
+header{
+	padding:60px;
+	background-color:#2C3E50;
+}
+header>h1{
+	font-size:32px;
+	font-weight:bold;
+	color:white;
+}
+header>h2{
+	color:orange;
+	}
+nav{
+	width:100%;
+}
+nav>p{
+	background-color:#718DA5;
+	display: inline;
+}
