@@ -1,7 +1,6 @@
 *{
 	margin:0;
 	font-family:"Trebuchet MS";
-	font-height:20px;
 }
 header{
 	padding:60px;
@@ -12,14 +11,82 @@ header>h1{
 	font-weight:bold;
 	color:white;
 }
-header>h2{
+header>p{
 	color:orange;
-	}
+}
 nav{
 	/*width:100%;*/
 	background-color:#718DA5;
+	padding-left:50px;
+}
+nav div:first-child p{
+	color:orange;
 }
 .menuNav{	
 	padding: 18px;
 	display: inline-block;
+}
+section{
+	padding:50px;
+}
+table{
+	margin-left:auto; 
+	margin-right: auto;	
+}
+
+th{
+	width:180px;
+	margin:0;
+	background-color:orange;
+	font-weight: bold;
+	border-bottom: 2px solid black
+}
+img{
+	width:100px;
+	height:100px;
+}
+table.tablaClases{
+	border: 2px solid black;
+	border-left: 1px solid lightgray;
+}
+table.tablaClases *{
+	padding:7px;
+}
+table.tablaClases td{
+	margin: 0px;
+	border-bottom:1px solid lightgray;
+}
+table.tablaClases tr:nth-child(3) *{
+	border:none;
+}
+table.tablaClases tr *:nth-child(3){
+	border-right: 2px solid black;
+}
+table.tablaLogos td{
+	width:130px;
+}
+table.tablaInfo tr td:first-child{
+	width:120px;
+}
+table.tablaInfo tr{
+	height:170px;
+}
+form *{
+	border-radius: 7px;
+}
+button{
+	width:75px;
+	height:30px;
+	color:white;
+	background-color:#2C3E50;
+}
+footer{
+	padding:35px;
+	background-color:#2C3E50;
+}
+footer h4{
+	color:white;
+}
+footer p{
+	color:orange;
 }
