@@ -2,19 +2,51 @@
 <html lang="en">
 <head>
 	<meta charset="UTF-8">
-	<title>Documento</title>
+	<title>Documento</title>	
+	<style>
+		#foto{
+			border: 10px solid #00FF00;
+			border-radius:50%;
+		}
+		body{
+			background-color:#BDBDBD;
+		}
+		table{
+			/*margin-left:auto;
+			margin-right:auto;*/
+			margin: 0 auto 0 auto;
+		}
+		h1{
+			text-align:center;
+		}
+		.informacion{
+			text-align:center;
+		}
+		#tablaClases tr th:first-child{
+			background-color: violet;
+			color:white;
+		}
+		#tablaClases tr:first-child th{
+			background-color: darkblue;
+			color:white;
+		}
+
+	</style>
 </head>
 <body>
-	<h1 align="center">Mi biografía</h1><br>
-	<img src="acm-logo.jpg" width="200px" alt="Myself"> <!--style="width:20%;"--> 
-	<p><b>Nombre: </b>Luis Regino Hernández Noriega</p>
-	<p><b>Edad:</b> 21 a&ntilde;os</p>
-	<p><b>Lugar de Nacimiento: </b>Veracruz, Ver.</p>
-	<p><b>Equipo:</b> FastFingers lml</p>
-	<a href="../inicio.html" target="_blank"><img src="../img/clic.png" alt="Click aquí!" width="100px"></a>
+	<h1>Mi biografía</h1><br>
+	<div class="informacion">
+		<img id="foto" src="acm-logo.jpg" width="200px" alt="Myself"> <!--style="width:20%;"--> 
+		<p><b>Nombre: </b>Luis Regino Hernández Noriega</p>
+		<p><b>Edad:</b> 21 a&ntilde;os</p>
+		<p><b>Lugar de Nacimiento: </b>Veracruz, Ver.</p>
+		<p><b>Equipo:</b> FastFingers lml</p>	
+		<a href="../inicio.html" target="_blank"><img src="../img/clic.png" alt="Click aquí!" width="100px"></a>
+	</div>	
+	
 	<hr>
 	<h2 align="center"> Horario de Clases </h2>
-	<table border="1px">
+	<table id="tablaClases" border="1px">
 		<tr>
 			<th>Hora</th>
 			<th>Lunes</th>
