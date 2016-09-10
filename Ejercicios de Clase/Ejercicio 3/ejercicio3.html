@@ -1,0 +1,85 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>Document</title>
+	<style>
+		#contenedor{
+			background-color:blue;
+			padding:10px;
+			min-height: 400px;
+		}
+		#contenedor div{
+			background-color: green;
+			margin: 10px 0px; 
+			color:white;
+			display: inline-block;
+			min-width: 80px;
+			min-height: 80px;
+			padding:10px;
+			text-align:center;
+			border: solid 5px black;
+		}
+		#a{
+			
+		}
+		/*
+		#primero{
+			position:relative;
+			top:8em;
+			left:5em;
+		}
+		#segundo{ /*Si no encuentra ningun contenedor padre que tenga una posición fijä
+			position:absolute;
+			top:24em;
+			right:2em;
+		}
+		#cuarto{
+			position:fixed;
+			bottom:5em;
+		}*/
+	</style>
+</head>
+<body>
+	<section id="contenedor">
+		<div id="primero">1</div>
+		<div id="segundo">2 ya me voy</div>
+		<div id="tercero">3 Yo ocupo su lugar yupi!</div>
+		<div id="cuarto">4 Yo estoy fijo en la pantalla</div>
+	</section>
+	<section id="contenedor">	
+		<div id="a">1 flote y ya  no soy parte del flujo xD</div>
+		<div id="b">2</div>
+		<div id="c">3 yo no voy aquí xD</div>
+		<div id="d">
+			<img src="cepc.jpg" alt="CEPC" width="150px" style="float:left;">
+			<p>Quisiera qu eel texto fluyera sobre la imagen :c</p>
+			<p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Temporibus ullam odio distinctio repudiandae ducimus. Explicabo consequuntur, illum, adipisci id alias modi earum illo ullam, voluptatibus minus, inventore dolorem architecto quam.</p>
+			<p>Ya fluye xD</p>
+		</div>
+	</section> 
+	<section id="contenedor" style="height:auto;margin-top:10px;">
+		<img src="cepc.jpg" alt="CEPC" width="300px" style="float:left;"/>
+		<div id="I">
+			<p>Como la imagen está flota</p>
+			<p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Quae numquam sapiente ducimus dolorem recusandae eaque fugit libero laborum doloribus quia, ipsum explicabo vel optio expedita suscipit, reprehenderit distinctio aut iusto.</p>
+			<p>
+				Si queremos que la isguiente caja se ponga hasta abajo de la imagen debemos limpiar esa área
+			</p>
+		</div>
+		<div id="II">
+			<p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Dolorem, debitis. At aliquam animi quisquam sed eaque maxime qui facere molestiae, officiis neque, molestias beatae minus ad, vitae tempora dolor expedita.</p>
+			<p>AREA LIMPIA :D</p>
+			<p>Uy pero el contenedor no lo agarro :( pues vamos a forzarlo :D</p>
+		</div>		
+	</section>
+	<section style="clear:both;">
+		
+	</section>
+	<section style="background-color:black; margin-top:30px;">
+		<div style="background-color:black;float:right;width:30px;height:30px;color:white;border:solid 10px purple;display:inline;">Hola</div>
+		<div style="background-color:black;float:left;width:30px;height:30px;color:white;border:solid 10px purple;display:inline;">Hola</div>
+		<div style="clear:both"></div>
+	</section>
+</body>
+</html>
