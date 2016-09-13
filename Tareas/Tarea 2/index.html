@@ -3,8 +3,145 @@
 <head>
 	<meta charset="UTF-8">
 	<title>Posicionamiento</title>
+	<link href="https://fonts.googleapis.com/css?family=Raleway" rel="stylesheet">
+	<style>
+		*{
+			padding:0px;
+			margin:0px;
+			font-family: 'Raleway', sans-serif;
+		}
+		body{
+			background-color:#D2D7D3;
+		}
+		header, footer{
+			color:white;
+			margin:10px;
+			background-color:#888888;
+			border-radius: 5px;
+			padding: 10px;
+		}
+		#logotipo{
+			display: inline-block;
+		}
+		#buscar{
+			margin-top:10px;
+			display:inline-block;
+			float:right;
+		}
+		.limpiar{
+			clear:both;
+		}
+		nav{
+			background-color: #60646D;
+			margin: 10px;
+			padding:10px 20px;
+			border-radius: 5px
+		}
+		nav li{
+			display:inline-block;
+			margin-right: 25px;
+			color:white;
+		}
+		aside{
+			display:inline-block;
+			font-size:12pt;
+			max-width: 20%;
+			min-height: 500px;
+			margin:10px;
+			padding:20px;
+			background-color:#F0F0F0;/*#E7E7DE;*/
+			border-radius:5px;
+		}
+		aside li{
+			margin:5px 20px;
+		}
+		section{
+			border-radius:5px;
+			margin:10px;
+			float:right;
+			display:inline-block;
+			max-width: 70%;
+			
+		}
+		#main{
+			max-width: 70%;
+			display:inline-block;
+			border-radius: 5px;
+			padding:20px;
+			background-color: #F0F0F0;
+		}
+		#main h2{
+			font-size:14pt;
+		}
+		#main p{
+			display:inline;
+		}
+		#right{
+			float:right;
+			display:inline;
+			background-color: #F0F0F0;
+			margin:0px;
+			padding:20px;
+			border-radius: 5px;
+			max-width: 20%;
+			min-height: 500px;
+
+		}
+		footer{
+			padding:20px;
+		}
+	</style>
 </head>
 <body>
-	
+	<header>
+		<div id="logotipo">
+			<h1>Logotipo</h1>
+		</div>
+		
+		<div id="buscar">
+			<form action="get">
+				<label for="buscar">Buscar:</label>
+				<input type="text" placeholder="Introduzca el texto">
+			</form>
+		</div>
+	</header>
+	<nav>
+		<ul>
+			<li>Algo</li>
+			<li>Ficticio</li>
+			<li>Va en este</li>
+			<li>Menú Ficticio</li>
+		</ul>
+	</nav>
+	<aside>
+		<p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Quo temporibus explicabo voluptas quod reiciendis enim, nihil at voluptatibus consequuntur, ab vitae nesciunt nobis necessitatibus.</p>
+			<ul>
+				<li>C++</li>
+				<li>Java</li>
+				<li>C#</li>
+			</ul>
+	</aside>
+	<section>
+		<div id="main">
+			<h2>Un título ficticio</h2>
+			<img src="cepc.jpg" alt="Logo" width="100px">
+			<p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Ea rerum dolorum blanditiis nihil dolorem nobis voluptatem, corporis deleniti, delectus temporibus veritatis, officiis eum. In rem commodi maxime, excepturi velit sit!</p> <br>
+			<a href="http://coj.uci.cu" target="_blank">Ver más...</a><br> <br>
+			<hr><br>
+			<h2>Otro título ficticio</h2>
+			<img src="cepc.jpg" alt="Logo" width="100px">
+			<p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Ea rerum dolorum blanditiis nihil dolorem nobis voluptatem, corporis deleniti, delectus temporibus veritatis, officiis eum. In rem commodi maxime, excepturi velit sit!</p> <br>
+			<a href="http://coj.uci.cu" target="_blank">Ver más...</a><br> <br>
+		</div>
+		<div id="right">
+			<h3>Contenido relacionado</h3>
+			<p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Libero dolorem ducimus, aperiam, aut incidunt molestias dolorum? Quisquam voluptatibus, ipsa labore quas.</p><br>
+			<h3>Más contenido</h3>
+			<p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Consectetur veniam, inventore corporis vel, perspiciatis amet, perferendis expedita modi repellendus quibusdam optio tempore.</p>
+		</div>
+	</section>
+	<footer>
+		<p>Hecho por: Luis Regino Hernández Noriega</p>
+	</footer>
 </body>
 </html>
