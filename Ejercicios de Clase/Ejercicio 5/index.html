@@ -1,0 +1,75 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>Hover</title>
+	<style>
+		*{
+			margin:0px;
+			padding: 0px;
+		}
+		header{
+			padding:20px;
+		}
+		input{
+			border: none;
+			border-bottom: 2px solid black;
+		}
+		input:focus{
+			border: 2px solid red;
+		}
+		.divs{
+			padding:20px;
+		}
+		.aside{
+			min-width:15%;
+			float:left;
+			max-width:20%;
+			display: inline-block;
+			border: 2px solid red;
+		}
+		.form{
+			display:inline-block;
+			border: 2px solid orange;
+		}
+
+	</style>
+</head>
+<body>
+	<header>
+		<h1>Formulario de registro</h1>
+		<br><hr>
+	</header>	
+	
+	<div class="divs">
+		<div class="aside">
+			<h3>Nombre y apellidos</h3>
+		</div>
+		<div class="form">
+			<form action="get">
+				<input type="text" name="nombre" size="30px"><br>
+				<label for="nombre">Nombre</label><br>
+				<input type="text" name="1apellido" size="50px"><br>
+				<label for="1apellido">Primer apellido</label><br>
+				<input type="text" name="2apellido" size="50px"><br>
+				<label for="2apellido">Segundo apellido</label><br>
+			</form>
+		</div>	
+	</div>
+	<div class="divs">
+		<div class="aside">
+			<h3>Dirección</h3>
+		</div>
+		<div class="form">
+			<form action="get">
+				<input type="text" name="nombre" size="30px"><br>
+				<label for="nombre">Calle, número, piso, puerta</label><br>
+				<input type="text" name="1apellido" size="50px"><br>
+				<label for="1apellido">Primer apellido</label><br>
+				<input type="text" name="2apellido" size="50px"><br>
+				<label for="2apellido">Segundo apellido</label><br>
+			</form>
+		</div>	
+	</div>
+</body>
+</html>
