@@ -1,0 +1,245 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>Posicionamiento</title>
+	<link href="https://fonts.googleapis.com/css?family=Raleway" rel="stylesheet">
+	<style>
+		*{
+			padding:0px;
+			margin:0px;
+			font-family: 'Raleway', sans-serif;
+		}
+		body{
+			padding:10px;
+			/*background-color:#D2D7D3;*/
+			background-image:url("img/background-mosaic.jpg");
+			background-repeat: repeat;
+		}
+		header, footer{
+			color:white;
+			margin:10px;
+			background-color:#888888;
+			border-radius: 5px;
+			padding: 10px;
+			box-shadow: 0px 4px 1px black;
+		}
+		#logotipo, #logotipo *{
+			display: inline-block;
+			margin-top:5px;
+		}
+		#titulo{
+			margin-left:15px;
+			margin-top:10px;
+			vertical-align: top;
+		}
+		#buscar{
+			margin-top:25px;
+			display:inline-block;
+			float:right;
+		}
+		.limpiar{
+			clear:both;
+		}
+		nav{
+			background-color: #60646D;
+			margin: 10px;
+			padding:10px 20px;
+			border-radius: 5px
+		}
+		nav li{
+			display:inline-block;
+			margin-right: 25px;
+			color:white;
+		}
+		nav a{
+			text-decoration: underline;
+			color:white;
+		}
+		nav a:hover{
+			font-weight: bold;
+			font-size:13pt;
+		}
+		aside{
+			display:inline-block;
+			font-size:12pt;
+			max-width: 15%;
+			min-height: 500px;
+			margin:10px;
+			padding:20px;
+			background-color:#F0F0F0;/*#E7E7DE;*/
+			border-radius:5px;		
+		}
+		aside li{
+			margin:5px 20px;
+		}
+		section{
+			border-radius:5px;
+			margin:10px;
+			display:inline-block;
+			
+		}
+		aside, #main, #right{			
+			box-shadow: 10px 10px 5px -7px rgba(0,0,0,0.75);	
+		}
+		#main{
+			display:inline-block;
+			border-radius: 5px;
+			padding:30px;
+			background-color: #F0F0F0;
+			max-width: 75%;
+		}
+		#main h2{
+			font-size:14pt;
+		}
+		.noticia-imagen{
+			float:left;
+			display:inline;
+			margin-right:15px;
+		}
+		.noticia-imagen img{
+			width:360px;
+		}
+		.noticia-info{
+			clear:left;
+			display:inline;
+		}
+		.limpiar{
+			clear:both;
+		}
+		#main p{
+			display:inline;
+		}
+		#right{
+			float:right;
+			text-align:center;
+			display:inline;
+			background-color: #F0F0F0;
+			margin:0px;
+			padding:15px;
+			border-radius: 5px;
+			max-width: 15%;
+			min-height: 500px;
+		}
+		footer{
+			text-align: center;
+			clear:both;
+			padding:20px;
+		}
+	</style>
+</head>
+<body>
+	<header>
+		<div id="logotipo">
+			<img src="img/logo_white.png" alt="Logo" width="100px"/>
+			<h1 id="titulo">Logotipo</h1>
+		</div>
+		
+		<div id="buscar">
+			<form action="get">
+				<label for="buscar">Buscar:</label>
+				<input type="text" placeholder="Introduzca el texto">
+			</form>
+		</div>
+	</header>
+	<nav>
+		<ul>
+			<li><a href="index.html">Inicio</a></li>
+			<li><a href="http://www.ign.com/pc" target="_blank">PC</a></li>
+			<li><a href="http://www.ign.com/xbox-one" target="_blank">Xbox One</a></li>
+			<li><a href="http://www.ign.com/ps4" target="_blank">PS4</a></li>
+		</ul>
+	</nav>
+	<!--<aside>
+		<p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Quo temporibus explicabo voluptas quod reiciendis enim, nihil at voluptatibus consequuntur, ab vitae nesciunt nobis necessitatibus.</p>
+			<ul>
+				<li>C++</li>
+				<li>Java</li>
+				<li>C#</li>
+			</ul>
+	</aside>-->
+	<section>
+		<div id="main">
+			<div class="noticia">
+				<h2>Las 11 mejores laptops para gaming</h2><br>
+				<div class="noticia-imagen">
+					<img src="img/gaming-laptop.jpg" alt="Logo">	
+				</div>
+				<div class="noticia-info"><br>
+					<p>Las gaming laptops han aumentado su popularidad recientemente. Debido a esto, existe gran variedad de laptops que varían desde ultra-compactas de 12.5", hasta monstruos con 18" de pantalla y con teclado mecánico. Hemos elegido las 10 mejores que merecen tu atención.</p> <br><br>
+					<a href="http://www.bestproducts.com/tech/electronics/g1636/best-gaming-laptops/?slide=1" target="_blank">Ver noticia completa...</a><br> <br>	
+				</div>
+
+				<div class="limpiar"></div>				
+			</div>			
+			<br><hr><br>
+			<div class="noticia">
+				<h2>Este es el secreto del poder de las gafas HoloLens</h2><br>
+				<div class="noticia-imagen">
+					<img src="img/hololens.png" alt="Logo">	
+				</div>
+				<div class="noticia-info"><br>
+					<p>Ahora sabemos por qué las gafas HoloLens, las gafas de realidad aumentada de Microsoft, han llamado tanto la atención. Resulta que el poder de las HoloLens viene de un potente proecesdor de 24 núcleos capaces de realizar un billón de operaciones por segundo cada uno.</p> <br><br>
+					<a href="https://www.cnet.com/es/noticias/microsoft-hololens-gafas-realidad-aumentada-procesador-24-nucleos/" target="_blank">Ver noticia completa...</a>
+					<br> <br>
+				</div>
+
+				<div class="limpiar"></div>				
+			</div>
+			<br><hr><br>
+			<div class="noticia">
+				<h2>Pokemon GO Plus, la pulsera para cazar Pokémon</h2><br>
+				<div class="noticia-imagen">
+					<img src="img/pokegoplus.jpg" alt="Pokemon GO Plus">	
+				</div>
+				<div class="noticia-info"><br>
+					<p>El 16 de septiembre se lanzó a la venta la pulsera de Pokémon GO que nos permitirá cazar Pokémon sin necesidad de utilizar el teléfono. Aquí te mostramos las características y ventajas acerca de este nuevo gadget que podría facilitar nuestra caza de Pokémon.</p><br><br>
+					<a href="http://www.elandroidelibre.com/2016/09/analisis-pokemon-go-plus.html" target="_blank">Ver noticia completa...</a><br> <br>	
+				</div>
+
+				<div class="limpiar"></div>				
+			</div>
+			<br><hr><br>
+			<div class="noticia">
+				<h2>VR One de MSI, una computadora en una mochila</h2><br>
+				<div class="noticia-imagen">
+					<img src="img/backpack2.png" alt="Pokemon GO Plus">	
+				</div>
+				<div class="noticia-info"><br>
+					<p>Dentro de la tecnología de VR gaming, tanto el Oculus Rift como el HTC Vive (las opciones más comunes) requieren de una conexión cableada entre el headset y una computadora relativamente poderosa. Sin embargo, MSI corta ese cable con su mochila VR One, o al menos redirige el cable a una PC que cargarás en tu espalda. Siendo la VR One la primer mochila de Realidad Virtual.</p><br><br>
+					<a href="http://www.pcgamer.com/msis-vr-one-is-a-pascal-powered-pc-in-a-backpack/" target="_blank">Ver noticia completa...</a><br> <br>	
+				</div>
+
+				<div class="limpiar"></div>				
+			</div>
+			<br><hr><br>
+			<div class="noticia">
+				<h2>Logitech adquiere Saitek, podrían despegar los videojuegos de simulación de vuelo con VR</h2><br>
+				<div class="noticia-imagen">
+					<img src="img/logitech.jpg" alt="Pokemon GO Plus">	
+				</div>
+				<div class="noticia-info"><br>
+					<p>Logitech adquirió recientemente a la compañía Saitek, conocida por sus controles, joysticks y accesorios especializados en simulación de vuelo y espacio. A pesar que Logitech ya fabrica volantes para juegos de manejo, la compañía nos dice, <a href="http://blog.logitech.com/2016/09/15/creating-immersive-gaming-experience-logitech-acquires-saitek/" target="_blank">en su blog</a>, que busca expandirse al amplio mercado de simulación. </p><br><br>
+					<a href="http://www.techradar.com/news/gaming/logitech-cleared-for-take-off-snaps-up-flight-stick-specialist-saitek-1328755" target="_blank">Ver noticia completa...</a><br> <br>	
+				</div>
+
+				<div class="limpiar"></div>				
+			</div>
+		</div>
+
+		<div id="right">
+			<h3>¿Qué VR Headset comprar?</h3><br>
+			<iframe width="210" src="https://www.youtube.com/embed/yeoi3R8lHaw?rel=0&amp;showinfo=0" frameborder="0" allowfullscreen></iframe><br><br>
+			<h3>Resident Evil 7 VR Demo</h3><br>
+			<iframe width="210" src="https://www.youtube.com/embed/NlNvXjnDDqA?rel=0&amp;showinfo=0" frameborder="0" allowfullscreen></iframe><br><br>
+			<h3>Tutorial de HoloLens</h3><br>
+			<iframe width="210" src="https://www.youtube.com/embed/VX3O650comM?rel=0&amp;showinfo=0" frameborder="0" allowfullscreen></iframe><br><br>
+			<h3>Soundtrack Minecraft</h3><br>
+			<iframe width="210" src="https://www.youtube.com/embed/vPs5xUTvoHo?rel=0&amp;showinfo=0" frameborder="0" allowfullscreen></iframe><br><br>
+		</div>
+	</section>
+	<footer>
+		<p>Hecho por: Luis Regino Hernández Noriega</p>
+	</footer>
+</body>
+</html>
