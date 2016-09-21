@@ -1,0 +1,43 @@
+header{
+	padding:0.1em 10px;
+}
+h4{
+	font-size:1.5em;
+}
+.verde{
+	color:white;
+	background-color:#009688;
+}
+.contenedor{
+	padding: 10px 8px;
+}
+.tarjeta{
+	float:left;
+	width:32%;
+	min-height:550px;
+	box-shadow:0px 2px 4px 0px rgba(0,0,0,.16), 0px 2px 10px 0px rgba(0,0,0,.22);
+	margin:0px 5px; 
+	box-sizing: border-box;
+}
+.marginArriba{
+	margin-top:16px !important;
+}
+.imagenTarjeta{
+	
+}
+.imagenTarjeta img{
+	width:100%;
+}
+.infoTarjeta{
+	text-align:center;
+}
+@media screen and (max-width: 785px){
+	.tarjeta{
+		width:48%;
+	}
+}
+@media screen and (max-width: 560px){
+	.tarjeta{
+		width:98%;
+	}
+}
