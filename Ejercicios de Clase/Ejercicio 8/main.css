@@ -1,0 +1,138 @@
+*{
+	margin:0;
+}
+.navbar ul{
+	list-style-type:none;
+	padding:0;
+	overflow:hidden;
+	background-color: #333;
+	font-family:'Open Sans', sans-serif;
+	color:white;
+}
+
+.navbar ul li{
+	display:inline-block;
+	padding:14px 16px;
+	font-size:17px;
+	transition:0.3s;
+	float:left;
+}
+
+
+.navbar ul li a{
+	color:white;
+	text-decoration: none;
+}
+
+.navbar li:hover{
+	background-color:#555;
+}
+
+header{
+	text-align: center;
+	padding:5em;
+	background-color: #16a085;
+}
+header>h1{
+	font-family:'Lobster Two', cursive;
+	font-size:56px;
+	color:#f1c40f;
+}
+header > p{
+	color:white;
+}
+h2{
+	font-family: 'Lobster Two',cursive;
+}
+p{
+	font-family:'Open Sans', sans-serif;
+}
+.container{
+	padding:5% 10%;
+}
+.container section{
+	float:left;
+	width:32.33%;
+	box-sizing:border-box;
+	display:inline-block;
+	padding:10px;
+	margin:5px;
+	text-align:justify;
+}
+.container section > h2{
+	text-align:center;
+}
+.containerImg{
+	text-align: center;
+}
+.col{
+	box-shadow:0 1px 4px rgba(0,0,0,0.3), 0 0 40px rgba(0,0,0,0.1) inset;
+}
+.footerTitulo{
+	vertical-align: center;
+	text-align: center;
+	padding:30px;
+}
+.color{
+	display:inline-block;
+	color:white;
+	border:0px;
+	float:left;
+	width:25%;
+	text-align: center;
+	padding:30px;
+	box-sizing: border-box;
+	min-height: 70px;
+}
+#alizarin{
+	background-color: blue;
+}
+#belize{
+	background-color: red;
+}
+#emerald{
+	background-color: green;
+}
+#amarillo{
+	background-color: yellow;
+}
+@media screen and (max-width:1245px){
+	.container{
+		padding:5% 5%;
+	}
+}
+@media screen and (max-width:900px){
+	.container section{
+		width:45%;
+	}
+}
+@media screen and (max-width: 680px){
+	.navbar ul li{
+		float:none;
+		display:block;
+		text-align:center;
+		padding:7px 8px;
+	}
+	header{
+		padding:3em;
+	}
+	header > h1{
+		font-size:48px;
+		color:#c0392b;
+	}
+	.container section{
+		display:block;
+		padding:5px;
+		width:95%;
+		float:none;
+		margin-bottom:15px;
+	}
+	.container section > h2{
+		font-size:36px;
+	}
+	.color{
+		width:100%;
+		display:block;
+		float:none;
+	}
+}
