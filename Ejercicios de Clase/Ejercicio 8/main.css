@@ -55,6 +55,7 @@ p{
 	width:32.33%;
 	box-sizing:border-box;
 	display:inline-block;
+	min-height: 300px;
 	padding:10px;
 	margin:5px;
 	text-align:justify;
@@ -122,7 +123,7 @@ p{
 	}
 	.container section{
 		display:block;
-		padding:5px;
+		padding:10px;
 		width:95%;
 		float:none;
 		margin-bottom:15px;
