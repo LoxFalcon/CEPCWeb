@@ -1,0 +1,103 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>Guess the letter</title>
+	<script type="text/javascript">
+		window.addEventListener("load",EventWindowLoaded,false);
+
+		function EventWindowLoaded(){
+			canvasApp();
+		}
+		
+		function canvasApp(){
+			var canvas=document.getElementById("miCanvas");
+			var context=canvas.getContext("2d");
+			var veces;
+			var mensaje="Adivina la letra desde a hasta z";
+			var letras = ["a","b","c","d","e","f","g","h","i","j","k","l","m","n","o","p","q","r","s","t","u","v","w","x","y","z"];
+			var hoy = new Date();
+			var letraAAdivinar;
+			var letrasUtilizadas;
+			var finDelJuego=false;
+			
+			function iniciarJuego(){
+				var indice=Math.floor(Math.random()*letras.length);
+				letraAAdivinar=letras[indice];
+				console.log(letraAAdivinar);
+				veces=0; letrasUtilizadas=[];
+				window.addEventListener("keydown",eventKeyPressed,false);
+				dibujarPantalla();
+
+				function eventKeyPressed(e){
+					if(!finDelJuego){
+						var letraPresionada = String.fromCharCode(e.keyCode);
+						letraPresionada=letraPresionada.toLowerCase();												
+						console.log(letraPresionada);
+						if(letraPresionada==letraAAdivinar){
+							finDelJuego=true;
+						}else{
+							var indicePresionada=letras.indexOf(letraPresionada);
+							if(indicePresionada<0){
+								mensaje="No es una letra";
+							}else {
+								letrasUtilizadas.push(letraPresionada);
+								veces++;
+								if(indicePresionada>indice){
+									mensaje="La letra está más abajo";
+								}else{
+									mensaje="La letra está más arriba";
+								}
+							}
+						}
+					}
+					dibujarPantalla();
+				}
+
+			}			
+			function dibujarPantalla(){
+				context.fillStyle="#ffffaa";
+				context.fillRect(0,0,canvas.width,canvas.height);
+
+				context.strokeStyle="#000000";
+				context.strokeRect(0,0,canvas.width,canvas.height);
+
+				context.textBaseline="top";
+
+				//Fecha
+				context.fillStyle="#000000";
+				context.font="10px Sans-Serif";
+				context.fillText(hoy,150,10);
+
+				//Veces
+				context.fillStyle="#109910";
+				context.font="16px Sans-Serif";
+				context.fillText("Veces: "+veces,115,80);
+
+				//Mensaje
+				context.fillStyle="#000000";
+				context.font="16px Sans-Serif";
+				context.fillText(mensaje,115,125);
+
+				//Letras intentadas
+				context.fillStyle="#FF0000";
+				context.font="16px Sans-Serif";
+				context.fillText("Letras intentadas: : "+letrasUtilizadas.toString(),10,260);
+
+				if(finDelJuego){
+					context.fillStyle="#FF0000";
+					context.font="40px Sans-Serif";
+					context.fillText("Ganaste !!",150,190);
+				}
+			}
+			iniciarJuego();
+			dibujarPantalla();
+		}
+	</script>
+</head>
+<body>
+	<canvas id="miCanvas" height="500" width="500">
+		GG No soportas canvas		
+	</canvas>
+</body>
+</html>
