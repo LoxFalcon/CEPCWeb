@@ -1,0 +1,73 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>Bolitas</title>
+	<script type="text/javascript">
+		window.addEventListener("load",CargarTodo,false);
+
+		function CargarTodo(){
+			canvasApp();
+		}
+
+		function canvasApp(){
+			var canvas = document.getElementById("miCanvas");
+			var context=canvas.getContext("2d");
+			var bolitas=[];
+			function Bolita(x,y,radio,r,g,b){
+				this.x = x;
+				this.y = y;
+				this.radio = radio;
+				this.r=r;
+				this.g=g;
+				this.b=b;
+				this.vel = Math.floor(Math.random()*10)+1;
+				this.dirx = (Math.floor(Math.random()*2)==1?1:-1)+this.vel;
+				this.diry = (Math.floor(Math.random()*2)==1?1:-1)+this.vel;
+			}
+			Bolita.prototype.pintarse=function(){
+				context.fillStyle="rgb("+this.r+","+this.g+","+this.b+",1)";
+				//context.strokeStyle="black";
+				context.beginPath();
+				context.arc(this.x,this.y,this.radio,0,Math.PI*2,true);
+				context.fill();
+				//context.stroke();
+			}
+			function agregarBolita(){
+				var radio = Math.floor(Math.random()*25)+1;
+				var bolita = new Bolita(Math.floor(Math.random()*(canvas.width-radio)),Math.floor(Math.random()*(canvas.height-radio)),
+					radio,Math.floor(Math.random()*256),Math.floor(Math.random()*256),Math.floor(Math.random()*256));
+				bolitas.push(bolita);
+			}
+			function pintarBolitas(){
+				context.clearRect(0,0,canvas.width,canvas.height);
+				for(var i in bolitas){
+					var x = bolitas[i].x;
+					var y = bolitas[i].y;
+					var r = bolitas[i].radio;
+
+					if(x+r>=canvas.width || x-r==0){
+						bolitas[i].dirx *=-1;
+					}
+					if(y+r>=canvas.width || y-r==0){
+						bolitas[i].diry *=-1;
+					}
+
+					bolitas[i].x+=.5;
+					bolitas[i].y+=.5;
+					bolitas[i].pintarse();
+				}
+				window.requestAnimationFrame(pintarBolitas);
+			}
+			function dibujarPantalla(){
+				window.addEventListener("click",agregarBolita,false);
+				window.requestAnimationFrame(pintarBolitas);
+			}
+			dibujarPantalla();
+		}
+	</script>
+</head>
+<body>
+	<canvas id="miCanvas" width="500" height="500">No sirve GG</canvas>
+</body>
+</html>
