@@ -1,0 +1,46 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>Reloj</title>
+	<script type="text/javascript">
+		window.addEventListener("load",sitioCargado,false);
+
+		function sitioCargado(){
+			canvasApp();
+		}
+
+		var canvas=document.getElementById("miCanvas");
+		var context=canvas.getContext("2d");
+		function reloj(){
+			var tiempo = new Date();
+			context.save();
+			context.clearRect(0,0,500,500);
+			context.translate(canvas.width/2, canvas.height/2);
+			context.scale(0.5,0.5);
+			context.rotate(-Math.PI/2);
+			context.strokeStyle="black";
+			context.fillStyle="white";
+			context.lineCap="round";
+
+			context.save();
+			for(var i=0;i<12;i++){
+				context.beginPath();
+
+				context.stroke();
+			}
+		}
+		function canvasApp(){
+			function dibujarPantalla(){
+
+			}
+			dibujarPantalla();
+		}
+	</script>
+</head>
+<body>
+	<canvas id="miCanvas" width="500" height="500">
+		GG no tienes un navegador chido, vato.
+	</canvas>
+</body>
+</html>
