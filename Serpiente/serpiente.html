@@ -1,0 +1,118 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>Serpiente Ficticia</title>
+	<script type="text/javascript">
+		window.addEventListener("load",eventWindowLoaded,false);
+		var blockNum = 0;
+		var blockSize =0;
+		var w,h;
+		function eventWindowLoaded(){
+			canvasApp();
+		}
+		function canvasSupport(){
+			return Modernizr.canvas;
+		}
+		function randomColor(){
+			var R = Math.floor(Math.random()*256);
+			var G = Math.floor(Math.random()*256);
+			var B = Math.floor(Math.random()*256);
+			return "rgb("+R+","+G+","+B+")";
+		}
+		function Serpiente(){
+			this.cuerpo=new Array(3);
+			this.dir =  Math.floor(Math.random()*3)+1; //R,D,L,U
+			var mitadX = blockSize*blockNum/2;
+			this.color = "blue";
+			for(var i=0;i<this.cuerpo.length;i++){
+				this.cuerpo[i]={x:mitadX+i*blockSize,y:mitadX};
+			}
+		}
+		Serpiente.prototype.dibujarSerpiente=function(context){
+			for(var i=0;i<this.cuerpo.length;i++){
+				context.beginPath();	
+				context.fillStyle = this.color;
+				context.fillStroke= "white";
+				//context.lineWidth=1.0;
+				context.fillRect(this.cuerpo[i].x,this.cuerpo[i].y, blockSize,blockSize);
+				context.fill();
+			}	
+		}
+		Serpiente.prototype.moverSerpiente=function(){
+			var newX = this.cuerpo[0].x;
+			var newY = this.cuerpo[0].y;
+			switch(this.dir){
+				case 0: //Right
+					newX+=blockSize;
+					break;
+				case 1: //Down
+					newY+=blockSize;
+					break;
+				case 2: //Left
+					newX-=blockSize;
+					break;
+				case 3: //Up
+					newY-=blockSize;
+					break;
+			}
+			//COMPROBAR COLISIONES
+
+			if(newX<0||newY<0||newX>w||newY>h) {console.log(newX+" "+newY);return false;}
+			//Movimiento
+			this.cuerpo.splice(this.cuerpo.length-1,1);
+			this.cuerpo.splice(0,0,{x:newX,y:newY}); //Insertamos nuevo al frente
+			return true;
+		}
+		function canvasApp(){
+			if(!canvasSupport){
+				return;
+			}
+			var theCanvas = document.getElementById("miCanvas");
+			var context = theCanvas.getContext("2d");
+			w = theCanvas.width; h = theCanvas.height;
+			blockNum = 30;
+			blockSize = w/blockNum;
+			function dibujarGrid(){
+				context.fillStyle = "#FFF";
+				context.fillRect(0,0,w,h);
+				context.strokeStyle="#000";
+				context.strokeRect(1,1,w-2,h-2);				
+				context.fill();
+				for(var i=0;i<=w;i+=blockSize){
+					context.beginPath();
+					context.moveTo(i,0);
+					context.lineTo(i,h);
+					context.stroke();
+				}
+				for(var i=0;i<=h;i+=blockSize){
+					context.beginPath();
+					context.moveTo(0,i);
+					context.lineTo(w,i);
+					context.stroke();	
+				}
+			}
+			var serp = new Serpiente();
+			function dibujarPantalla(){
+				dibujarGrid();
+				serp.dibujarSerpiente(context);
+				if(!serp.moverSerpiente()){
+					context.fillStyle="#FF0000";
+					context.font="40px Sans-Serif";
+					context.fillText("Perdiste imbécil !!",150,190);
+				};
+			}
+			function gameLoop(){
+				window.setTimeout(gameLoop,1000);
+				dibujarPantalla();
+			}
+			gameLoop();
+		}
+	</script>
+</head>
+<body>
+	<canvas id="miCanvas" width="600" height ="600">
+		Tu navegador no soporta Canvas.
+	</canvas>
+</body>
+</html>
