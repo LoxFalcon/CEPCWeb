@@ -1,0 +1,64 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>Rebote Simple</title>
+	<script type="text/javascript">
+		window.addEventListener("load",canvasApp,false);
+		function canvasApp(){
+			var micanvas = document.getElementById("micanvas");
+			var context = micanvas.getContext("2d");
+			function dibujarPantalla(){
+				context.fillStyle = '#EEEEEE';
+				context.fillRect(0, 0, micanvas.width, micanvas.height);
+				//Box
+				context.strokeStyle = '#000000';
+				context.strokeRect(1, 1, micanvas.width-2, micanvas.height-2);
+				if (ball.y + ball.radius <= micanvas.height) {
+					ball.velocityy += gravity;
+				} else {
+					ball.velocityx = 0;
+					ball.velocityy = 0;
+					ball.y = micanvas.height - ball.radius;
+				}
+				ball.y += ball.velocityy;
+				ball.x += ball.velocityx;
+				context.fillStyle = "#000000";
+				context.beginPath();
+				context.arc(ball.x,ball.y,ball.radius,0,Math.PI*2,true);
+				context.closePath();
+				context.fill();
+			}
+			var gravity=.1;
+			var speed = 4;
+			var angle = 305;
+			var radians = angle * Math.PI/ 180;
+			var radius = 15;
+			var vx = Math.cos(radians) * speed;
+			var vy = Math.sin(radians) * speed;
+			var p1 = {
+				x:20,
+				y:micanvas.height-radius};
+			var ball = {
+				x:p1.x,
+				y:p1.y,
+				velocityx: vx, 
+				velocityy: vy, 
+				radius:radius
+			};
+			
+			function cicloJuego(){
+				window.setTimeout(cicloJuego,20);
+				dibujarPantalla();
+			}
+			cicloJuego();
+		}
+		
+	</script>
+</head>
+<body>
+	<canvas id="micanvas" width="500" height="500">
+		No soportas canvas, amigo.
+	</canvas>
+</body>
+</html>

@@ -1,0 +1,109 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>Box2D</title>
+	<link href="https://fonts.googleapis.com/css?family=Roboto" rel="stylesheet">
+	<script type="text/javascript" src="Box2D.js"></script>
+	<script>
+		window.addEventListener("load",eventWindowLoaded,false);
+
+		function eventWindowLoaded(){
+			canvasApp();
+		}
+		function canvasSupport(){
+			return Modernizr.canvas;
+		}
+		function canvasApp(){
+			if(!canvasSupport){
+				return;
+			}
+			function dibujarPantalla(){
+				world.Step(1/60,10,10);
+				world.DrawDebugData();
+				world.ClearForces();
+			}
+			//var elCanvas = document.getElementById("canvas");
+			var elCanvas = document.getElementById("canvas");
+			var context = elCanvas.getContext("2d");
+			var b2Vec2 = Box2D.Common.Math.b2Vec2,
+			b2BodyDef = Box2D.Dynamics.b2BodyDef,
+			b2Body = Box2D.Dynamics.b2Body,
+			b2FixtureDef = Box2D.Dynamics.b2FixtureDef,
+			b2World = Box2D.Dynamics.b2World,
+			b2PolygonShape = Box2D.Collision.Shapes.b2PolygonShape,
+			b2CircleShape = Box2D.Collision.Shapes.b2CircleShape,
+			b2DebugDraw = Box2D.Dynamics.b2DebugDraw;
+			var world = new b2World(new b2Vec2(0,10), true);
+			var numBalls = 50;
+			var scaleFactor = 30;
+			var balls= new Array();
+			for( var i=0;i<numBalls;i++){
+				var ballDef = new b2BodyDef;
+				ballDef.type = b2Body.b2_dynamicBody;
+				var ypos = (Math.random()*elCanvas.height)/scaleFactor;
+				var xpos = (Math.random()*elCanvas.width)/scaleFactor;
+				var size = ((Math.random()*20)+5)/scaleFactor;
+				ballDef.position.Set(xpos,ypos);
+				var ballFixture = new b2FixtureDef;
+				ballFixture.density = 10.0;
+				ballFixture.friction=0.5;
+				ballFixture.restitution = 1;
+				ballFixture.shape = new b2CircleShape(size);
+				var newBall = world.CreateBody(ballDef);
+				newBall.CreateFixture(ballFixture);
+				balls.push(newBall);
+			}
+			var width = elCanvas.width;
+			var height = elCanvas.height;
+			var wallDefs = new Array(
+			{x:width/(2*scaleFactor),y:(1/scaleFactor),w: width/(2*scaleFactor) ,h:(1/scaleFactor)},
+
+			//top wall (x,y) del centro de la figura, (w,h) a partir del centro de la figura, se hará hacia ambos lados
+			{x:width/(2*scaleFactor),y:(height-1)/scaleFactor,w: width/(2*scaleFactor) ,h:1/scaleFactor},
+			//bottom wall
+			{x:(1/scaleFactor),y:height/(2*scaleFactor),w:(1/scaleFactor),h:height/(2*scaleFactor)},
+			//left wall
+			{x:(width-1)/scaleFactor,y:height/(2*scaleFactor),w:1/scaleFactor ,h:height/(2*scaleFactor)} );
+			//right wall
+			var walls = new Array();
+			for(var i=0;i<wallDefs.length;i++){
+				var wallDef = new b2BodyDef;
+				wallDef.type= b2Body.b2_staticBody;
+				wallDef.position.Set(wallDefs[i].x,wallDefs[i].y);
+				var newWall = world.CreateBody(wallDef);
+				var wallFixture = new b2FixtureDef();
+				wallFixture.density = 10.0;
+				wallFixture.friction = 0.5;
+				wallFixture.restitution = 1;
+				wallFixture.shape = new b2PolygonShape;
+				wallFixture.shape.SetAsBox(wallDefs[i].w, wallDefs[i].h);
+				newWall.CreateFixture(wallFixture);
+				walls.push(newWall);
+			}
+			var debugDraw = new b2DebugDraw();
+			debugDraw.SetSprite(context);
+			debugDraw.SetDrawScale(scaleFactor);
+			debugDraw.SetFillAlpha(0.3);
+			debugDraw.SetLineThickness(1.0);
+			debugDraw.SetFlags(b2DebugDraw.e_shapeBit | b2DebugDraw.e_jointBit);
+			world.SetDebugDraw(debugDraw);
+			function gameLoop(){
+				window.setTimeout(gameLoop,20);
+				dibujarPantalla();
+			}
+			gameLoop();
+		}
+		
+	</script>
+</head>
+<body style="background-color:#F6F6F6;">
+	<header align="center">
+		<h1 style="font-family:Roboto">Motor gráfico Box2D</h1>
+	</header>
+		<div align="center"><canvas id="canvas" width="500" height="500">
+			Tu navegador no soporta Canvas
+		</canvas>
+	</div>
+</body>
+</html>
