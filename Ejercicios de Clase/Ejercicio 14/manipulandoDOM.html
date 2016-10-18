@@ -1,0 +1,89 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>Manipulando el DOM</title>
+	<!-- Agregamos las librerias de JQuery desde la pagina oficial-->
+	<script	  src="https://code.jquery.com/jquery-3.1.1.min.js"
+			  integrity="sha256-hVVnYaiADRTO2PzUGmuLJr8BLUSjGIZsDYGmIJLv2b8="
+			  crossorigin="anonymous"></script>
+</head>
+<body>
+
+	<div class="post">
+		
+	</div>
+	
+	<img src="" alt="">
+
+
+	<input type="text">
+
+	<script>
+		$(document).ready(function (){
+			var postSelection=$(".post");
+			/*Existen muchas maneras de manipular el DOM en entre ellas nos podemos
+			encontrar con los siguientes metodos*/
+
+			postSelection.html("<h1>Hola CEPC</h1>"); //html() establece el contenido HTML de un elemento 
+
+			postSelection.text("Este es un texto"); // text() establece el texto dentro de una etiqueta HTML 
+
+			//agarremos la etiqueta imagen
+			var imgSelection=$('img');
+
+			imgSelection.attr("src","../flareon.png") // attr() define atributos de cualquier etiqueta
+			imgSelection.removeAttr("src");
+
+			imgSelection.width(100);  // width() define el ancho de cualquier elemento
+
+			imgSelection.height(50);  //height() define el alto de cualquier elemento
+
+			//seleccionemos el input
+
+			var inputSelection=$('input');
+
+			inputSelection.val("Pon tu nombre"); // val() define lo que va en un  input
+
+
+
+			//veamos los metodos para manipular el dom
+
+			//podemos agregar elementos al final o al principio pero dentro de un elemento seleccionado con append y prepend
+
+			postSelection.append("<h2>agregamos un subtitulo</h2>");
+			postSelection.prepend("<h1>Titulo</h1>");
+
+			// si quisieramos crear elementos antes o despues de uno seleccionado podemos usar after o before
+
+
+			postSelection.before("<p>Comunidad Estudiantil de Programacion Competitiva</p>"); // se agrega antes del divselection
+
+			postSelection.after("<a href='http://www.cepc.lpsoluciones.com'>Click Aqui</a>");
+
+			// tambien podemos borrar elementos del DOM con remove y empty
+
+			//con remove quitamos el elemento por completo, si tiene hijos tambien se eliminan
+			imgSelection.remove(); 
+
+			//con empty solo vaciamos el elemento seleccionado , es decir se quitan sus hijos pero el no
+			postSelection.empty();
+
+			
+			for(var i=0;i<10;i++){
+				console.log("agrego un elemento");
+				postSelection.append("<p> parrafo numero "+i+"</p>");
+
+			}
+
+			//tambien podemos crear elementos de esta menra y despues usarlos a nuestra conveniencia
+			var parrafo=$("<p>Este es un parrafo</p>");
+			postSelection.prepend(parrafo);
+
+
+		});
+
+
+	</script>
+</body>
+</html>

@@ -1,0 +1,53 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>Recorriendo el DOM</title>
+	<!-- Agregamos las librerias de JQuery desde la pagina oficial-->
+	<script	  src="https://code.jquery.com/jquery-3.1.1.min.js"
+			  integrity="sha256-hVVnYaiADRTO2PzUGmuLJr8BLUSjGIZsDYGmIJLv2b8="
+			  crossorigin="anonymous"></script>
+</head>
+<body>
+	<nav>
+		<ul>
+			<li id="first"><a href="">1</a></li>
+			<li><a href="">2</a></li>
+			<li><a href="">3</a></li>
+			<li><a href="">4</a></li>
+			<li><a href="">5</a></li>
+		</ul>
+	</nav>
+
+	<script type="text/javascript">
+			$(document).ready(function (){
+				/*Una vez que hemos hecho una seleccion podemos movernos a traves del DOM con los 
+				metodos que JQuery ofrece para eso*/
+
+				var navSelection=$('nav'); //seleccionamos el elemento nav
+				console.log(navSelection.html());
+				// a traves de los metodos de JQuery podemos recorrer el DOM desde este punto 
+				$('ul').parent()
+			    	.css("backgroundColor","red");
+
+			    $('li#first').next()
+			    	.css("backgroundColor","yellow");
+
+			    $('li').children()
+			    	.css("textDecoration","none");
+
+			    //tambien podemos iterar dentro de un elemento con la funcion each
+
+			    $('ul').each(function(indice,elemento){
+			    	console.log(
+			            'El elemento ' + indice +
+			            'contiene el siguiente HTML: ' +
+			            $(elemento).html()
+	       			 );
+			    });
+
+		  });
+
+	</script>
+</body>
+</html>

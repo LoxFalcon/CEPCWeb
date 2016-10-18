@@ -1,0 +1,98 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>Mi primera pagina con JQuery</title>
+	<!-- Agregamos las librerias de JQuery desde la pagina oficial-->
+	<script	  src="https://code.jquery.com/jquery-3.1.1.min.js"
+			  integrity="sha256-hVVnYaiADRTO2PzUGmuLJr8BLUSjGIZsDYGmIJLv2b8="
+			  crossorigin="anonymous"></script>
+	<!--Tambien se puede descargar el archivo y usarlo de forma local-->
+
+	<style type="text/css">
+			
+			.fondo1{
+				background-color: #ffaaaa;
+			}
+			.fondo2{
+				background-color: #ccc342;
+			}
+
+
+	</style>
+</head>
+<body>
+	
+	<div class="post"></div>
+	<div class="post"></div>
+	<div class="post"></div>
+
+	<a>Este vinculo a donde lleva?</a>
+	
+<!--Es recomendable que los scripts se pongan en esta seccion-->
+<script type="text/javascript">
+	//preguntamos si el documento ya esta cargado
+	$(document).ready(function (){
+		console.log("Documento cargado");
+
+		//seleccionemos un elemento del documento y comprobemos que si se ha seleccionado
+		if($(".post").length){
+			console.log("Div seleccionado");
+		}
+
+		/*como cada vez que se selecciona un objeto se ejecuta mucho codigo
+		podemos guardar la seleccion en una variable*/
+
+		var postSelection=$(".post");
+
+		//una vez seleccionado podemos trabajar con la seleccion
+		postSelection.html("<h1>Hola CEPC</h1>");
+
+		//podemos obtener tambien lo que tienen en su interior
+		console.log(postSelection.html());
+
+		//podemos obtener los estilos css de los elementos de la pagina
+		/*para las reglas css que se forman de dos palabras con un guion enmedio
+		en JQuery se transforman en su camelCase forma Ej. font-size -> fontSize*/
+
+		console.log(postSelection.css('width'));
+
+		//tambien podemos definir los estilos css de los elementos de la pagina
+		/*sin embargo esto se debe evitar ya que para eso existe css*/
+		postSelection.find("h1")
+						.css("fontSize",'66px');
+
+		/*En cambio podemos definir reglas css desde css y removerlas o quitarlas con JQuery*/
+
+		//vamos a agregar las regla .fondo1 css a todos los div#post del documento
+
+		postSelection.addClass('fondo1');
+
+		//podemos quitarla tambien
+		postSelection.removeClass('fondo1');
+
+		//o variar entre quitarla y ponerla con toggle
+		postSelection.toggleClass('fondo1');
+
+		//tambien podemos obtener informacion directa sobre el tamaño de un elmento
+
+		console.log(postSelection.width());
+		console.log(postSelection.height());
+		//y su posicion
+		console.log(postSelection.position());
+
+		//tambien podemos definir atributos de cualquier elemento html en Jquery a traves de la funcion attr
+
+		var aSelection=$('a'); //obtenemos todos los elementos a del documento
+		aSelection.attr({
+			"href":"http://www.cepc.lpsoluciones.com",
+			"title":"Pagina oficial del CEPC",
+			"target":"_blank"
+		});
+
+		//asi mismo tambien podemos obtener los atributos de un elemento
+		console.log(aSelection.attr('href'));
+	});
+</script>
+</body>
+</html>

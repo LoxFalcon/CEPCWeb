@@ -1,0 +1,226 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>Asteroids</title>
+	<script type="text/javascript">
+		window.addEventListener("load",windowLoaded,false);
+		function windowLoaded(){
+			canvasApp();
+		}
+		function canvasApp(){
+			var theCanvas = document.getElementById("miCanvas");
+			var context = theCanvas.getContext("2d");
+			//estados de la aplicación
+			var ESTADO_INICIAL = 0;
+			var ESTADO_ESPERANDO_POR_CARGAR=5;
+			var ESTADO_DE__TITULO=10;
+			var ESTADO_NUEVO_JUEGO = 20;
+			var ESTADO_NUEVO_NIVEL = 30;
+			var ESTADO_JUGADOR_START=40;
+			var ESTADO_JUGANDO_NIVEL =50;
+			var ESTADO_JUGADOR_MUERE = 60;
+			var ESTADO_FIN_DEL_JUEGO = 70;
+			var estadoActualDelJuego = ESTADO_INICIAL;
+
+			var funcionEstadoActual=null;
+			//Entorno de Juego
+			var puntaje = 0;
+			var vidas = 3;
+			var vidaExtraCada = 10000;
+			var vidasExtraGanadas = 0;
+			var nivel=0;
+
+			//Campo de Juego
+			var xMin = 0;
+			var xMax = canvas.width;
+			var yMin = 0;
+			var yMax = canvas.height;
+
+			//valores del puntaje
+			var puntajeRocaGrande=25;
+			var puntajeRocaMediana=50;
+			var puntajeRocaChica=100;
+			var puntajePlatillo=300;
+
+			//Constantes de los meteoros
+			var ROCA_GRANDE = 1;
+			var ROCA_MEDIANA = 2;
+			var ROCA_CHICA = 3;
+			var PLATILLO = 4;
+
+			var jugador={};
+			var rocas=[];
+			var platillos=[];
+			var misiles=[];
+			var particulas=[];
+			var misilesPlatillos=[];
+			var albercaDeParticulas=[];
+			var particulasMax = 200;
+			var nuevaParticula;
+			var particulaTemporal;
+
+			//Teclas presionadas
+			var teclasPresionadas =[];
+
+			//valores por nivel
+			var nivelAjusteVelocidadRocaMaximo=1;
+			var nivelPlatilloMaximo=1;
+			var nivelRangoOcurrenciaPlatillos=25;
+			var nivelVelocidadPlatillo=1;
+			var nivelPlatilloMisilRetraso=300;
+			var nivelRangoDisparoPlatillo=30;
+			var nivelPlatilloVelocidadMisil=1;
+
+			function cambiarEstadoDelJuego(estadoNuevo){
+				estadoActualDelJuego = estadoNuevo;
+				switch(estadoActualDelJuego){
+					case ESTADO_INICIAL:
+						funcionEstadoActual = EstadoInicialDelJuego;
+						break;
+					case ESTADO_ESPERANDO_POR_CARGAR:
+						funcionEstadoActual=EstadoEsperandoPorCargar;
+						break;
+					case ESTADO_DE__TITULO:
+						funcionEstadoActual=EstadoTitulo;
+						break;
+					case ESTADO_NUEVO_JUEGO:
+						funcionEstadoActual=EstadoNuevoJuego;
+						break;
+					case ESTADO_NUEVO_NIVEL:
+						funcionEstadoActual=EstadoNuevoNivel;
+						break;
+					case ESTADO_JUGANDO_NIVEL:
+						funcionEstadoActual=EstadoJugandoNivel;
+						break;
+					case ESTADO_JUGADOR_START:
+						funcionEstadoActual=EstadoJugadorStart;
+						break;
+					case ESTADO_JUGADOR_MUERE:
+						funcionEstadoActual=EstadoJugadorMuere;
+						break;
+					case ESTADO_FIN_DEL_JUEGO:
+						funcionEstadoActual=EstadoFinDelJuego;
+						break; lo hizo adrede
+				}
+			}
+			function EstadoEsperandoPorCargar(){
+				console.log("Haciendo nada...");
+			}
+			function EstadoTitulo(){
+				if(tituloInicio != true){
+					fillBackground();
+					setTextStyleTitle();
+					context.fillText("GEo Blaster X-ten-d",120,70);
+					setTextStyle();
+					context.fillText("Presiona espacio para jugar",130,140);
+					setTextStyleCredits();
+					context.fillText("Un ejemplo de juego con HTML5",125,200);
+					context.fillText("Con Canvas",100,215);
+					tituloInicio=true;
+				}else{
+					if(teclasPresionadas[32]==true){
+						console.log("Espacio presionado");
+						cambiarEstadoDelJuego(ESTADO_NUEVO_JUEGO);
+						titutloInicio=false;
+					}
+				}
+			}
+			function EstadoNuevoNivel(){
+				rocas = [];
+				platillos=[];
+				misiles=[];
+				misilesPlatillos=[];
+				nivel++;
+				nivelAjusteVelocidadRocaMaximo=nivel*.25;
+				if(nivelAjusteVelocidadRocaMaximo>3){
+					nivelAjusteVelocidadRocaMaximo=3;
+				}
+
+				nivelPlatilloMaximo=1+Math.floor(nivel/10);
+				if(nivelPlatilloMaximo>5){
+					nivelPlatilloMaximo=5;
+				}
+
+				nivelRangoOcurrenciaPlatillos = 10+3*nivel;
+				if(nivelRangoOcurrenciaPlatillos>35){
+					nivelRangoOcurrenciaPlatillos=35;
+				}
+
+				nivelVelocidadPlatillo=1+.5*nivel;
+				if(nivelVelocidadPlatillo>5){
+					nivelVelocidadPlatillo=5;
+				}
+				nivelPlatilloMisilRetraso=120-10*nivel;
+				if(nivelPlatilloMisilRetraso<20){
+					nivelPlatilloMisilRetraso=20;
+				}
+				nivelRangoDisparoPlatillo=20+3*nivel;
+				if(nivelRangoDisparoPlatillo<50){
+					nivelRangoDisparoPlatillo=50;
+				}
+
+				nivelPlatilloVelocidadMisil=1+.2*nivel;
+				if(nivelPlatilloVelocidadMisil>4){
+					nivelPlatilloVelocidadMisil=4;
+				}
+
+				//Creamos las rocas del nivel
+				for(var i=0;i<nivel+3;i++){
+					var nuevaRoca = {};
+					/*Escala
+					1 = grande
+					2 = mediana
+					3 = chica
+					éstas van a ser usadas como divisor del nuevo tamaño
+					50/1 = 50
+					50/2 = 25
+					50/3 = 16 */
+					nuevaRoca.width=64;
+					nuevaRoca.height = 64;
+					nuevaRoca.mitadWidth = 32;
+					nuevaRoca.mitadHeight=32;
+
+					nuevaRoca.golpeWidth=40;
+					nuevaRoca.golpeHeight=40;
+
+					//Empiezan todas las nuevas rocas desde la esquina superior izquierda
+
+					nuevaRoca.x = Math.floor(Math.random()*50);
+					nuevaRoca.y = Math.floor(Math.random()*50);
+					nuevaRoca.dx = (Math.random()*2)+nivelAjusteVelocidadRocaMaximo;
+					if(Math.random()<.5){
+						nuevaRoca.dx*=-1;
+					}
+					nuevaRoca.dy=(Math.random()*2)+nivelAjusteVelocidadRocaMaximo;
+					if(Math.random()<.5){
+						nuevaRoca.dy*=-1;
+					}
+
+					//Rotación y Dirección
+
+					if(Math.random()<.5){
+						nuevaRoca.rotacionInc=-1;
+					}else{
+						nuevaRoca.rotacionInc=1;
+					}
+					nuevaRoca.retrasoAnimacion=Math.floor(Math.random()*3+1);
+					nuevaRoca.contadorAnimacion=0;
+					nuevaRoca.valorPuntaje=puntajeRocaGrande;
+					rocas.push(nuevaRoca);
+				}
+				reiniciarJugador();
+				cambiarEstadoDelJuego(ESTADO_JUGADOR_START);
+			}
+
+			function dibujarPantalla(){
+
+			}
+			dibujarPantalla();
+		}
+	</script>
+</head>
+<body>
+	<canvas id="miCanvas" widht="400" height="400" style="position:absolute; top: 50px; left:30px;"></canvas>
+</body>
+</html>
