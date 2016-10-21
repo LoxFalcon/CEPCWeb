@@ -1,0 +1,198 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>Document</title>
+	<script	  src="https://code.jquery.com/jquery-3.1.1.min.js"
+			  integrity="sha256-hVVnYaiADRTO2PzUGmuLJr8BLUSjGIZsDYGmIJLv2b8="
+			  crossorigin="anonymous"></script>
+
+	<style type="text/css">
+
+		.prin{
+			margin: auto;
+		}
+
+		.prin>div{
+			border:1px solid black;
+			display: inline-block;
+		}
+
+		.izq{
+			padding: 10px;
+			height: 400px;
+			width: 55%;
+		}
+
+		.der{
+			float:right;
+			padding: 10px;
+			height: 400px;
+			width: 41%;
+		}
+
+		.miimg{
+			width:110px;
+			height:110px;
+		}
+
+		.col{
+			text-align:center;
+			padding:10px;
+			display:inline-block;
+		}
+
+		.info{
+			border: 1px solid black;
+			margin: auto;
+			margin-top: 5px;
+			padding: 5px;
+		}
+
+		.info h1{
+			margin: 5px;
+			padding:5px;
+			text-align: center;
+		}
+
+		.foto,.forma,.platillo div{
+			display: inline-block;
+		}
+
+		.forma{
+			/*border: 1px solid black;*/
+			margin: 10px;
+			float: right;
+			padding-right: 80px; 
+		}
+
+		.forma>div{
+			margin: 10px;
+			padding: 5px;
+		}
+
+		.forma label{
+			font-size: 20px;
+		}
+
+		.foto{
+			border:1px solid black;
+			width: 200px;
+			height: 200px;
+		}
+
+		.fotimg{
+			width: 200px;
+			height: 200px;
+		}
+
+		.platillo{
+			border:1px solid black;
+			margin: 10px 30px 10px 30px; 
+			padding: 10px;
+			
+		}
+
+		.infimg{
+			height: 300px;
+			width: 300px;
+		}
+
+		.dat{
+		}
+
+		.boton{
+			text-align: center;
+		}
+
+
+
+	</style>
+
+	<script type="text/javascript">
+
+		$(document).ready(function (){
+			var cont=$(".der");
+
+			for (var i = 0; i < 8; i++) {
+				cont.append("<div class='col'><img class='miimg' src='"+"img"+i+".jpg'></div>");
+			};
+
+			var $img=$(".miimg");
+			var $boton=$("#bot");
+			var $insImg=$(".foto");
+			var $plat=$(".info");
+			var $c1=$("#c1");
+			var $c2=$("#c2");
+			var $c3=$("#c3");
+			$img.on("click",function(){
+				var s=$(this).attr("src");
+				$insImg.empty();
+				$insImg.append("<img class='fotimg' src="+s+">");
+			});
+
+
+			$boton.on("click",function(e){
+				//Agregar platillo
+				e.preventDefault();
+				$plat.append("<div class='platillo'><div ><img class='infimg' src="+$(".fotimg").attr("src")+" ></div><div class='dat'><h2>Nombre: "+$c1.val()+"</h2><h2>Descripcion: "+$c2.val()+"</h2><h2>Precio: "+$c3.val()+"</h2></div></div>");
+
+				$c1.val("");
+				$c2.val("");
+				$c3.val("");
+				$insImg.empty();
+			});
+		});
+	</script>
+
+</head>
+<body>
+	<div class="prin">
+		<div class="izq">
+			<h2>Capturar Menu</h2>
+			<div class="prin">
+			<div class="foto"></div>
+			<form class="forma" action="">
+
+				<div class="datos">
+					<label  for="">Nombre del platillo:</label>
+					<input id="c1" type="text">
+				</div>
+
+				<div class="datos">
+					<label for="">Descripcion:</label>
+					<input id="c2" type="text">
+				</div>
+				
+				<div class="datos">
+					<label for="">Precio:</label>
+					<input id="c3" type="text">
+				</div>
+
+				<div class="boton"><button id="bot">Aceptar</button></div>
+				
+			</form>
+		</div>
+		</div>
+		<div class="der"></div>
+	</div>
+	<div style="clear:both;"></div>
+
+	<div class="info">
+		<h1>MENU</h1>
+
+
+<!--		<div class="platillo">
+			<div class="infimg"><img src="Lunes/img1.jpg" alt=""></div>
+			<div class="dat">
+				<h2>Nombre:</h2>
+				<h2>Descripcion:</h2>
+				<h2>Precio:</h2>
+			</div>
+			
+
+		</div>-->
+	</div>
+
+</body>
+</html>
