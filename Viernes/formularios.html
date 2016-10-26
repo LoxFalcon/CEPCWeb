@@ -1,0 +1,169 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>Validacion de formularios</title>
+	<script	  src="https://code.jquery.com/jquery-3.1.1.min.js"
+			  integrity="sha256-hVVnYaiADRTO2PzUGmuLJr8BLUSjGIZsDYGmIJLv2b8="
+			  crossorigin="anonymous"></script>
+
+	<style type="text/css">
+        body{
+            background: #e67e22;
+            padding-top: 40px;
+        }
+        #contenedor{
+            -webkit-border-radius: 10px;
+            -webkit-box-shadow: 0 0 20px rgba(0, 0, 0, 0.5);
+            -moz-border-radius: 10px;
+            -moz-border-shadow: 0 0 20px rgba(0, 0, 0, 0.5);
+            -o-border-radius: 10px;
+            -o-box-shadow: 0 0 20px rgba(0, 0, 0, 0.5);
+            background: #2ecc71;
+            border-radius: 10px;
+            box-shadow: 0 0 20px rgba(0, 0, 0, 0.5);
+            font-family: sans-serif;
+            font-size: 18px;
+            margin: 0 auto;
+            padding: 20px;
+            width: 40%;
+        }
+ 
+        .campo{
+            font-size: 12px;
+            padding: 5px;
+            margin-bottom: 10px;
+            width: 96%;
+            transition: .5s;
+
+        }
+
+        .campo:focus{
+			box-shadow: 0 0 10px rgba(0, 0, 0, 0.5);
+        }
+ 
+        .boton{
+            background: #3498db;
+            border: 1px solid black;
+            color: #fff;
+            border-radius: 5px;
+            width: 99%;
+            padding: 10px;
+            margin-left: auto;
+            margin-right: auto;
+            transition: .5s;
+        }
+
+        .boton:hover{
+            background: #f1c40f;
+           
+        }
+        .boton:focus{
+        	  background: #f1c40f;
+        }
+ 
+        .errores{
+            -webkit-boxshadow: 0 0 10px rgba(0, 0, 0, 0.3);
+            -moz-box-shadow: 0 0 10px rgba(0, 0, 0, 0.3);
+            -o-box-shadow: 0 0 10px rgba(0, 0, 0, 0.3);
+            background: black;
+            box-shadow: 0 0 10px rgba(0, 0, 0, 0.3);
+            color: white;
+            border-radius: 10px;
+            display: none;
+            font-size: 14px;
+            margin-top: -50px;
+            margin-left: 180px;
+            padding: 10px;
+            right: 25%;
+            position: absolute;
+        }
+    </style>
+</head>
+<body>
+
+	<div id="contenedor">
+            <form id="miFormulario">
+ 
+                <label>Nombre:</label><br />
+                <input type="text" id="itNombre" class="campo" /> <br/>
+                <div id="mensaje1" class="errores"> Dame tu nombre</div>
+ 
+                <label>E-mail:</label><br />
+                <input type="text" id="itMail" class="campo" /> <br/>
+                <div id="mensaje2" class="errores"> Dame un mail correcto</div>
+ 
+                <label>Asunto:</label><br />
+                <input type="text" id="itAsunto" class="campo" /> <br/>
+                <div id="mensaje3" class="errores"> Agrega un asunto</div>
+ 
+                <label>Edad:</label><br />
+                <input type="text" id="itEdad" class="campo" /> <br/>
+                <div id="mensaje4" class="errores"> -Edad entre 18 a 60 <br/> -Sólo números</div>
+ 
+                <center>
+                <input type="submit" id="bEnviar" value="Enviar datos" class="boton" />
+                </center>
+            </form>
+        </div>
+		
+		  <script>
+	        //Expresión para validar un correo electrónico
+	        var expr = /^[a-zA-Z0-9_\.\-]+@[a-zA-Z0-9\-]+\.[a-zA-Z0-9\-\.]+$/;
+	        //Expresión para validar edad de 18 a 60 años
+	        var expr2 = /^1[8-9]|[2-5]\d|60$/;
+	        $(document).ready(function(){
+	            //función click
+	            $("#bEnviar").click(function(){
+	                //Guardar en variables el valor que tengan las cajas de texto
+	                //Por medio de los id's
+	                //Y tener mejor manipulación de dichos valores
+	                var nombre = $("#itNombre").val();
+	                var correo = $("#itMail").val();
+	                var asunto = $("#itAsunto").val();
+	                var edad = $("#itEdad").val();
+	 
+	                // --- Condicionales anidados ----
+	                //Si nombre está vacío
+	                //Muestra el mensaje
+	                //Con false sale de los if's y espera a que sea pulsado de nuevo el botón de enviar
+	                if(nombre == ""){
+	                    $("#mensaje1").fadeIn("slow");
+	                    return false;
+	                }
+	                //en otro caso, el mensaje no se muestra
+	                else{
+	                    $("#mensaje1").fadeOut();
+	 
+	                    //Si correo está vacío y la expresión NO corresponde -test es función de JQuery
+	                    //Muestra el mensaje
+	                    //Con false sale de los if's y espera a que sea pulsado de nuevo el botón de enviar
+	                    if(correo == "" || !expr.test(correo)){
+	                        $("#mensaje2").fadeIn("slow");
+	                        return false;
+	                    }
+	                    else{
+	                        $("#mensaje2").fadeOut();
+	 
+	                        if(asunto == ""){
+	                            $("#mensaje3").fadeIn("slow");
+	                            return false;
+	                        }
+	                        else{
+	                            $("#mensaje3").fadeOut();
+	 
+	                            if(edad == "" || !expr2.test(edad)){
+	                                $("#mensaje4").fadeIn("slow");
+	                                return false;
+	                            }
+	                        }
+	                    }
+	                }
+	 
+	            });//click
+	        });//ready
+    </script>
+
+	
+</body>
+</html>

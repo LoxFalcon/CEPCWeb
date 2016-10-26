@@ -1,0 +1,119 @@
+*{
+	margin:0;
+	font-family: 'Telex', sans-serif;
+}
+header, footer{
+	text-align: center;
+	padding:3em;
+	background-color: #1C2021;
+	color:white;
+}
+header h1{
+	font-family: 'Russo One', sans-serif;
+}
+h2{
+	font-family: 'Orbitron', sans-serif;
+}
+footer h2{
+	font-size: 1em;
+}
+section{
+	background-color: #DDE6D6;
+	text-align: center;
+	padding:2em;
+}
+
+#seleccion{
+	text-align: center;
+}
+#yugiInfo, #yugiLista{
+	height:550px;
+	margin:5px;
+	display: inline-block;
+	padding:20px;
+	float: left;
+	background-color: #CCDFCC;
+	width:46%;
+	border-radius: .4em;
+}
+#cartas{
+	margin:5px;
+	display: inline-block;
+	padding:20px;
+	background-color: #CCDFCC;
+	width:92%;
+	border-radius: .4em;
+}
+#limpiar{
+	clear:both;
+}
+.ficha{
+	display: inline-block;
+	padding:10px;
+}
+.imagen{
+	width:300px;
+}
+.imagenLista{
+	display:inline-block;
+	width:100px;
+}
+.imagenDescripcion{
+	width:150px;
+}
+.fichaCarta{
+	padding:10px;
+}
+.datosCarta{
+	margin-left:10px;
+	float:left;
+	display:inline-block;
+	text-align: justify;
+}
+.imagenCarta{
+	float:left;
+	display: inline-block;
+}
+.imagenCarta img{
+	width:200px;
+}
+@media screen and (max-width:1245px){
+	.container{
+		padding:5% 5%;
+	}
+}
+@media screen and (max-width:900px){
+	.container section{
+		width:45%;
+	}
+}
+@media screen and (max-width: 680px){
+	.navbar ul li{
+		float:none;
+		display:block;
+		text-align:center;
+		padding:7px 8px;
+	}
+	header{
+		padding:3em;
+	}
+	header > h1{
+		font-size:48px;
+		color:#c0392b;
+	}
+	.container section{
+		display:block;
+		padding:10px;
+		width:95%;
+		float:none;
+		margin-bottom:15px;
+	}
+	.container section > h2{
+		font-size:36px;
+	}
+	.color{
+		width:100%;
+		display:block;
+		float:none;
+	}
+}

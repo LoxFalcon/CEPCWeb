@@ -1,0 +1,63 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>Imagenes con jQuery</title>
+	<link rel="stylesheet" type="text/css" href="stylesheet.css">
+	<link href="https://fonts.googleapis.com/css?family=Orbitron|Russo+One|Telex" rel="stylesheet">
+	<script src="jqui/jquery-3.1.1.min.js"></script>
+	<script src="script.js" ></script>
+	<script src="jqui/jquery-ui.js"></script>
+	<link rel="stylesheet" href="jqui/jquery-ui.theme.css">
+</head>
+<body>	
+	<header>
+		<h1>¡Yu-Gi-Oh!</h1>
+		<h2>¡Es hora del duelo!</h2>
+	</header>
+	<section id="seleccion">	
+		<div id="yugiInfo">
+			<div><h3>Descripción de la Carta</h3></div><br>
+			<div id="descripcion">
+			<form action="#" name="yugiDesc">
+				<label for="nombre">
+					Nombre de la carta: 
+				</label>
+				<input type="text"  name="nombre"> <br><br>
+				<label for="descripcion">Descripción:</label>
+				<textarea name="descripcion" cols="25" rows ="5" ></textarea><br><br><br>
+				<label for="imagenDesc">Imagen:</label><br><br>
+				<br id="boton"><br><button name="nose" type="button" value="wtf">fjsakl</button>
+			</form>
+			</div>
+		</div>
+		
+		<div id="yugiLista">
+			<div><h3>Lista de Imagenes disponibles</h3></div>
+			<div id="lista">
+				
+			</div>
+		</div>
+		<div id="limpiar"></div>
+	</section>
+	<div class="limpiar"></div>
+		<section id="agregados">		
+			<div id="titulo">
+				<h3>Lista de Cartas Creadas</h3>
+			</div>
+			<div id="cartas">
+				
+			</div>
+			<div class="limpiar"></div>
+		</section>
+	<footer>
+		<h2>Hecho por Luis Regino Hernández Noriega</h2>
+	</footer>
+	<div id="dialog-confirm" title="Empty the recycle bin?">
+		<p>
+			<span class="ui-icon ui-icon-alert">
+			</span>These items will be permanently deleted and cannot be recovered. Are you sure?
+		</p>
+	</div>
+</body>
+</html>
