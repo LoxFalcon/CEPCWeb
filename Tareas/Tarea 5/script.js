@@ -37,16 +37,16 @@ $(document).ready(function(){
 			alert("Por favor, seleccione una imagen para la carta");
 			return;
 		}
-		var fichaNueva =  	"<div class=\"fichaCarta\">\
-							 	<div class=\"imagenCarta\">\
-							 		<img src="+imgSrc+" alt=\"Imagen\" />\
+		var fichaNueva =  	'<div class="fichaCarta">\
+							 	<div class="imagenCarta">\
+							 		<img src="+imgSrc+" alt="Imagen" />\
 							 	</div>\
-							 	<div class=\"datosCarta\"><br>\
+							 	<div class="datosCarta"><br>\
 							 		<p><strong>Nombre: </strong>"+name+"</p>\
 							 		<p><strong>Descripción: </strong>"+desc+"</p>\
 							 	</div>\
-								<div id=\"limpiar\"></div>\
-							</div>"
+								<div id="limpiar"></div>\
+							</div>'
 		if(cartasAgregadas>0) fichaNueva = "<hr>"+fichaNueva;
 		cartasAgregadas++;
 		$('#cartas').append(fichaNueva);
