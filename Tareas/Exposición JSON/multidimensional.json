@@ -1,0 +1,36 @@
+{
+    "logged_in":true,
+    "town":"Dublin",
+    "state":"Ohio",
+    "country":"USA",
+    "products":
+    [
+        {
+            "pic_id":"1500",
+            "description":"Picture of a computer",
+            "localion":"img.cloudimages.us/2012/06/02/computer.jpg",
+            "type":"jpg",
+            "childrenimages":
+            [
+                {
+                    "pic_id":"15011",
+                    "description":"Picture of a cpu",
+                    "localion":"img.cloudimages.us/2012/06/02/mycpu.png",
+                    "type":"png"
+                },
+                {
+                    "pic_id":"15012",
+                    "description":"Picture of a cpu two",
+                    "localion":"img.cloudimages.us/2012/06/02/thiscpu.png",
+                    "type":"png"
+                }
+            ]
+        },
+        {
+            "pic_id":"1501",
+            "description":"Picture of a cpu",
+            "localion":"img.cloudimages.us/2012/06/02/cpu.png",
+            "type":"png"
+        }
+    ]
+}
