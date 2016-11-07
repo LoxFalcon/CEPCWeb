@@ -20,7 +20,7 @@ $(document).ready(function(){
 		}
 		sel.append("<br>");
 	};
-	/*$.ajax({
+	$.ajax({
 	  dataType: "json",
 	  url: "unidimensional.json",
 	  data: {},
@@ -35,7 +35,7 @@ $(document).ready(function(){
 	  success: function(result){
 	  	showJSON("",result,"#multidimensional .contenido");
 	  }
-	});*/
+	});
 
 	$.getJSON("unidimensional.json", {},function(result){
 		showJSON("",result,"#unidimensional .contenido");

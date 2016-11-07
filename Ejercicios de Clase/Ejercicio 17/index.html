@@ -5,9 +5,9 @@
 	<title>Imagenes con jQuery</title>
 	<link rel="stylesheet" type="text/css" href="stylesheet.css">
 	<link href="https://fonts.googleapis.com/css?family=Orbitron|Russo+One|Telex" rel="stylesheet">
-	<script src="jqui/jquery-3.1.1.min.js"></script>
-	<script src="script.js" ></script>
+	<script src="jqui/jquery-3.1.1.min.js"></script>	
 	<script src="jqui/jquery-ui.js"></script>
+	<script src="script.js" ></script>
 	<link rel="stylesheet" href="jqui/jquery-ui.theme.css">
 </head>
 <body>	
@@ -27,7 +27,7 @@
 				<label for="descripcion">Descripción:</label>
 				<textarea name="descripcion" cols="25" rows ="5" ></textarea><br><br><br>
 				<label for="imagenDesc">Imagen:</label><br><br>
-				<br id="boton"><br><button name="nose" type="button" value="wtf">fjsakl</button>
+				<br id="boton"><br><button id="botonAgregar" name="nose" type="button" value="wtf">Agregar Carta</button>
 			</form>
 			</div>
 		</div>
@@ -48,12 +48,15 @@
 			<div id="cartas">
 				
 			</div>
+			<div id="eliminacion">
+				
+			</div>
 			<div class="limpiar"></div>
 		</section>
 	<footer>
 		<h2>Hecho por Luis Regino Hernández Noriega</h2>
 	</footer>
-	<div id="dialog-confirm" title="Empty the recycle bin?">
+	<div id="dialog-confirm" title="¿Eliminar todas las cartas?">
 		<p>
 			<span class="ui-icon ui-icon-alert">
 			</span>These items will be permanently deleted and cannot be recovered. Are you sure?

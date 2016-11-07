@@ -15,6 +15,11 @@ $(document).ready(function(){
 	for(var x in cartas){
 		p.append("<div class=\"ficha\"><img src=\"img/"+cartas[x]+"\" class=\"imagenLista\"></div>");
 	}
+	function eliminarCartas(){
+		$('#cartas').empty();
+		$('#eliminacion').empty();
+		cartasAgregadas=0;
+	}
 	$('.imagenLista').click(function(){
 		var id = $('.imagenLista').index(this);
 		var img = $('.imagenDescripcion');
@@ -24,15 +29,33 @@ $(document).ready(function(){
 		img = $('.imagenDescripcion');
 		$(img).attr("src","img/"+cartas[id]);
 	});
-	$('button').click(function(){
+	$('#eliminacion').on("click",'#botonEliminar',function(){
+		console.log("Aceptar");
+		$( '#dialog-confirm' ).dialog({
+			autoOpen: true,
+			resizable: false,
+			height: 500,
+			width: 400,
+			modal: true,
+			buttons: {
+			"Eliminar todos los elementos": function() {
+				eliminarCartas();
+				$( this ).dialog("close");
+			},
+			Cancel: function() {
+			$( this ).dialog( "close" );
+		   		}
+			}
+    	});
+	});
+	$('#botonAgregar').click(function(){
 		var name = $('input').val();
 		var desc = $('textarea').val();
 		var imgSrc = $('.imagenDescripcion').attr('src');
-		console.log("\""+name+"\"");
-		if(name==null||name.length==0) {
+		/*if(name==null||name.length==0) {
 			alert("Por favor, introduzca un nombre para la carta"); 
 			return;
-		}
+		}*/	
 		if(imgSrc==null){
 			alert("Por favor, seleccione una imagen para la carta");
 			return;
@@ -49,9 +72,7 @@ $(document).ready(function(){
 							</div>"
 		if(cartasAgregadas>0) fichaNueva = "<hr>"+fichaNueva;
 		else{
-			fichaNueva+= "<form action=\"#\" name=\"formEliminar\">\
-							<button id=\"botonEliminar\" name=\"nose\" type=\"button\" value=\"eliminar\">\
-							Eliminar Todas</button></form>";
+			$('#eliminacion').append('<form action="#" name="formEliminar"><button id="botonEliminar" name="nose" type="button" value="eliminar">Eliminar Todas</button></form>');
 		}
 		cartasAgregadas++;
 		$('#cartas').append(fichaNueva);
@@ -59,22 +80,5 @@ $(document).ready(function(){
 		$('input').val('');
 		$('textarea').val('');
 	});
-	$('#botonEliminar').click(function(){
-		console.log("dfjsafdjak");
-		$( "#dialog-confirm" ).dialog({
-			resizable: false,
-			height: "auto",
-			width: 400,
-			modal: true,
-			display: block,
-			buttons: {
-			"Delete all items": function() {
-			$( this ).dialog( "close" );
-			},
-			Cancel: function() {
-			$( this ).dialog( "close" );
-		   		}
-			}
-    	});
-	});
+	
 });

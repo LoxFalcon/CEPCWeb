@@ -2,7 +2,7 @@
 	margin:0;
 	font-family: 'Telex', sans-serif;
 }
-header, footer{
+header, footer , nav{
 	text-align: center;
 	padding:3em;
 	background-color: #1C2021;
@@ -26,6 +26,20 @@ body>div{
 	margin-top:20px; margin-bottom:20px;
 	border-radius: .4em;
 	height:200px;
+}
+nav{
+	padding:1em;
+}
+nav div{
+	padding: 10px;
+	display:inline;
+}
+nav div a{
+	text-decoration: none;
+	color:white;
+}
+nav div:hover{
+	background-color:#60646D;
 }
 .contenido{
 	text-align:left;
