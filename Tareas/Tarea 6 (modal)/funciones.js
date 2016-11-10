@@ -15,7 +15,7 @@ function miniatura(img,nombre,desc,boton){
 		$img.attr("src",this.img);
 		$decCon.append("<h3>"+this.nombre+"</h3>");
 		$decCon.append("<p>"+this.desc+"</p>");
-		$decCon.append("<button type=\"button\" class=\"btn btn-primary btn-lg boton-open\" data-toggle=\"modal\" data-target=\"#myModal\">"+this.boton+"</button>");
+		$decCon.append("<button id='botonAbrir' type=\"button\" class=\"btn btn-primary btn-lg boton-open\" data-toggle=\"modal\" data-target=\"#myModal\">"+this.boton+"</button>");
 
 
 		$miniatura.append($img);
@@ -46,5 +46,29 @@ function inicializarCuadros(){
 	$albumnes.append($row.clone());
 	$artistas.append($row.clone());
 	$canciones.append($row.clone());
+}
+
+function personalizarModals(){
+	$("body").on("click","#artistas #botonAbrir",function(){
+		$("#breadCrumbs").empty();
+		$("#breadCrumbs").append('<ol class="breadcrumb">\
+									<li class="breadcrumb-item active">Artista</li>\
+									</ol>');
+	});
+	$("body").on("click","#albumnes #botonAbrir",function(){
+		$("#breadCrumbs").empty();
+		$("#breadCrumbs").append('<ol class="breadcrumb">\
+									<li class="breadcrumb-item"><a href="#">Artista</a></li>\
+									<li class="breadcrumb-item active">Album</li>\
+									</ol>');
+	});
+	$("body").on("click","#canciones #botonAbrir",function(){
+		$("#breadCrumbs").empty();
+		$("#breadCrumbs").append('<ol class="breadcrumb">\
+									<li class="breadcrumb-item"><a href="#">Artista</a></li>\
+									<li class="breadcrumb-item"><a href="#">Album</a></li>\
+									<li class="breadcrumb-item active">Canción</li>\
+									</ol>');
+	});
 }
 
