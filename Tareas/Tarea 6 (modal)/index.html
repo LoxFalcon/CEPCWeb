@@ -48,13 +48,20 @@
 					 <span class="input-group-addon" id="basic-addon1">
 						 <span class="glyphicon glyphicon-music"></span>
 					 </span>
-						<input type="text" class="form-control" placeholder="Encuentra tu musica" aria-describedby="sizing-addon1">
+						<input id="inputBuscar" type="text" class="form-control" placeholder="Encuentra tu musica" aria-describedby="sizing-addon1">
 					<span class="input-group-btn">
-				        <button class="btn btn-primary" type="button">Buscar!</button>	
+				        <button id="botonBuscar" class="btn btn-primary" type="button">Buscar!</button>	
 				    </span>
 					</div>
 				</form>
 			</div>
+		</div>
+		<div class="row errorBusqueda escondido">
+			<div id="errorBusqueda" class="col-xs-12 col-md-6">
+				<div class="alert alert-danger" role="alert">
+  					<strong>Oh snap!</strong> Change a few things upand try submitting again.
+  				</div>
+  			</div>
 		</div>
 		<div class="row">
 			<div class="col-xs-12 info" id="albumnes">
@@ -104,7 +111,16 @@
 	<script type="text/javascript" src="funciones.js"></script>
 	<script type="text/javascript">
 		$(document).ready(function (){
-
+			$("#errorBusqueda").hide();
+			$('#botonBuscar').click(function(){
+				if($("#inputBuscar").val()===""){
+					$("#errorBusqueda").removeClass("escondido");
+					$('#errorBusqueda').slideDown();	
+				}				
+			});
+			$('#inputBuscar').on("keypress",function(){
+				$('#errorBusqueda').fadeOut();
+			});
 			inicializarCuadros();
 
 		});

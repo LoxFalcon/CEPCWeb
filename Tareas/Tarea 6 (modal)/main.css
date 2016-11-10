@@ -13,6 +13,10 @@ body{
 input{
 	width: 100%;	
 }
+.escondido
+{
+	display:none;
+}
 .info{
 	background-color: #faf6ec;
 	margin-bottom: 10px;
