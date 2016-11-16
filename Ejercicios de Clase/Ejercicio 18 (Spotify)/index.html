@@ -111,19 +111,26 @@
 			var $boton= $("#btnBuscar");
 			var $txtBuscar=$("#txtBuscar");
 			$("#msgBuscar").hide();
-
+			$("#albumnes").on("click","button",function(){
+			console.log("no mms");
+			});
 			$boton.on("click",function (){
 
 				if($("#txtBuscar").val()==""){
 
 					$("#msgBuscar").slideDown("fast");
+				}else{
+					var consulta=$("#txtBuscar").val();
+					consulta = consulta.replace(" ","%20");
+					console.log("https://api.spotify.com/v1/search?q="+consulta+"&type=album&limit=6");
+					 $.get("https://api.spotify.com/v1/search?q="+consulta+"&type=album&limit=6",	function(data){
+					 	callback(data);
+					 });
 				}
 				
 			});
 
-			$txtBuscar.keyup(function(){
-
-				
+			$txtBuscar.keyup(function(){			
 
 					$("#msgBuscar").slideUp("fast");
 			
@@ -138,17 +145,13 @@
 			 * vamos a poner algunos albumnes
 			 */
 
-			 var consulta="Nelson%20kanzela";
+			 
 			 var info;
 
 			 function callback(data){
 			 	inicializarCuadros(data);
 			 }
 
-			 $.get("https://api.spotify.com/v1/search?q="+consulta+"&type=album&limit=6",	function(data){
-			 	callback(data);
-
-			 });
 
 			
 			

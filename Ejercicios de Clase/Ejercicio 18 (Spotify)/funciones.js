@@ -9,7 +9,7 @@ function miniatura(img,nombre,desc){
 		var $img=$("<img>")
 		var $decCon=$("<div></div>");
 		var $boton=$("<button>Abrir</button>");
-
+		$boton.attr("name",this.id);
 		$miniatura.attr("class","thumbnail");
 		$decCon.attr("class","caption text-center");
 		$img.attr("src",this.img);
@@ -24,7 +24,7 @@ function miniatura(img,nombre,desc){
 		$miniatura.append($img);
 		$miniatura.append($decCon);
 		$miniatura.append($boton);
-
+		
 		return $miniatura;
 	}
 
@@ -34,7 +34,9 @@ function inicializarCuadros(data){
 		var $albumnes=$("#albumnes");
 		var $artistas=$("#artistas");
 		var $canciones=$("#canciones");
-
+		$albumnes.empty();
+		$artistas.empty();
+		$canciones.empty();
 		var $row=$("<div></div>");
 		$row.attr("class","row");
 		
