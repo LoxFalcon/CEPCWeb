@@ -1,0 +1,196 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>Music App</title>
+	<link rel="stylesheet" href="bt/css/bootstrap.css">
+	<link rel="stylesheet" href="main.css">
+	<meta name="viewport" content="width=device-width, initial-scale=1.0">
+</head>
+<body>
+   <!--canciones-->
+	<div class="modal fade" tabindex="-1" id="CancionesModal" role="dialog">
+	  <div class="modal-dialog" role="document">
+	    <div class="modal-content">
+	      <div class="modal-header">
+	        <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
+	        <h4 class="modal-title">Modal title</h4>
+	      </div>
+	      <div class="modal-body" id="contenido-album">
+	        
+	      </div>
+	      <div class="modal-footer">
+	        <button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
+	        <button type="button" class="btn btn-primary">Save changes</button>
+	      </div>
+	    </div><!-- /.modal-content -->
+	  </div><!-- /.modal-dialog -->
+	</div><!-- /.modal -->
+
+	<div class="modal fade" tabindex="-1" id="myModal" role="dialog">
+	  <div class="modal-dialog" role="document">
+	    <div class="modal-content">
+	      <div class="modal-header">
+	        <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
+	        <h4 class="modal-title">Modal title</h4>
+	      </div>
+	      <div class="modal-body">
+	        <p>One fine body&hellip;</p>
+	      </div>
+	      <div class="modal-footer">
+	        <button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
+	        <button type="button" class="btn btn-primary">Save changes</button>
+	      </div>
+	    </div><!-- /.modal-content -->
+	  </div><!-- /.modal-dialog -->
+	</div><!-- /.modal -->
+
+	<nav class="navbar navbar-inverse">
+		<div class="container-fluid">
+		    <!-- Brand and toggle get grouped for better mobile display -->
+		    <div class="navbar-header">
+		      <button type="button" class="navbar-toggle collapsed" data-toggle="collapse" data-target="#bs-example-navbar-collapse-1" aria-expanded="false">
+		        <span class="sr-only">Toggle navigation</span>
+		        <span class="icon-bar"></span>
+		        <span class="icon-bar"></span>
+		        <span class="icon-bar"></span>
+		      </button>
+		      <a class="navbar-brand" href="#"> <span class="glyphicon glyphicon-music" aria-hidden="true"></span> MusicApp <span class="glyphicon glyphicon-music" aria-hidden="true"></span></a>
+		    </div>
+
+		    <!-- Collect the nav links, forms, and other content for toggling -->
+		    <div class="collapse navbar-collapse" id="bs-example-navbar-collapse-1">
+		      <ul class="nav navbar-nav">
+		        <li class="active"><a href="#">Musica<span class="sr-only">(current)</span></a></li>
+		        <li><a href="#">Artistas</a></li>
+		      </ul>
+		    </div><!-- /.navbar-collapse -->
+	    </div>
+	</nav>
+	
+		
+	<div class="jumbotron">
+	 <div class="container">
+	 	<h1>Toda tu musica</h1>
+	 	<p>En un solo lugar</p>
+	 </div>
+	</div>
+	
+	<div class="container">
+		<div class="row buscar">
+			<div class="col-xs-12 col-md-6" id="buscarContainer">
+				<form action="">
+					<div class="input-group input-group-lg">
+					 <span class="input-group-addon" id="basic-addon1">
+						 <span class="glyphicon glyphicon-music"></span>
+					 </span>
+						<input type="text" id="txtBuscar" class="form-control" placeholder="Encuentra tu musica" aria-describedby="sizing-addon1">
+
+					<span class="input-group-btn">
+				        <button class="btn btn-primary" id="btnBuscar" type="button">Buscar!</button>	
+				    </span>
+					</div>
+				</form>
+				<div class='alert alert-warning msg' id="msgBuscar" role='alert'>Debes Agregar un t&eacute;rmino de b&uacute;squeda</div>
+			</div>
+		</div>
+		<div class="row">
+			<div class="col-xs-12 info" id="albumnes">
+				<h2 style="display:inline-block;">Albumnes</h2>
+				<span class="badge">32</span>
+
+
+				
+			</div>
+		</div>
+
+		<div class="row">
+			<div class="col-xs-12 info" id="artistas">
+				<h2>Artistas</h2>
+			</div>
+		</div>
+
+		<div class="row">
+			<div class="col-xs-12 info" id="canciones">
+				<h2>Canciones</h2>
+			</div>
+		</div>
+	</div>
+	
+
+	<script	  src="https://code.jquery.com/jquery-3.1.1.min.js"
+			  integrity="sha256-hVVnYaiADRTO2PzUGmuLJr8BLUSjGIZsDYGmIJLv2b8="
+			  crossorigin="anonymous"></script>
+	<script type="text/javascript" src="bt/js/bootstrap.js"></script>
+	<script type="text/javascript" src="funciones.js"></script>
+	<script type="text/javascript">
+		$(document).ready(function (){
+
+			
+			var $boton= $("#btnBuscar");
+			var $txtBuscar=$("#txtBuscar");
+			$("#msgBuscar").hide();
+
+			$boton.on("click",function (){
+
+				if($("#txtBuscar").val()==""){
+
+					$("#msgBuscar").slideDown("fast");
+				}
+				else {
+
+					$("#albumnes").empty();
+					var busqueda = $("#txtBuscar").val();
+					busqueda = busqueda.replace(" ", "%20");
+			        console.log(busqueda);
+
+			         var consulta=busqueda;
+					 var info;
+					
+
+					 function callback(data){
+					 	inicializarCuadros(data);
+					 }
+
+					 $.get("https://api.spotify.com/v1/search?q="+consulta+"&type=album&limit=6",	function(data){
+					 	callback(data);
+
+					 });
+				}
+				
+			});
+
+			$txtBuscar.keyup(function(){			 
+					$("#msgBuscar").slideUp("fast");
+			});
+
+			function callback2(data){
+					 	agregarCanciones(data);
+					 }
+
+			$("#albumnes").on("click","button", function(){
+				$(".modal-body").empty();
+				$(this).attr( "data-target","#CancionesModal");
+				var altracks = $(this).attr("name");
+				$.get("https://api.spotify.com/v1/albums/"+altracks+"/tracks", function(data){
+					callback2(data);
+				});
+			});
+
+			/**
+			 * Usaremos AJAX con JQUERY pero tambien se puede hace con 
+			 * JS puro. Investigar como :)
+			 * Usaremos la API REST que nos proporciona Spotify 
+			 * WTF es una API REST?
+			 * The base address of the API is https://api.spotify.com
+			 * vamos a poner algunos albumnes
+			 */
+
+			
+			
+
+		});
+
+	</script>
+</body>
+</html>

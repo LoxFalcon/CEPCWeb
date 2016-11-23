@@ -1,0 +1,55 @@
+.jumbotron{
+	margin-top: -30px;
+	background-image: url("bb.png");
+	height: 300px;
+	background-size: cover;
+
+}
+body{
+	background-image: url("tx.png");
+	background-color: #004a31;
+}
+
+input{
+	width: 100%;	
+}
+.alerta{
+	max-height: 45px !important;
+	padding: 2% 2% !important;
+	margin-bottom: 0px !important;
+	text-align: center;
+}
+.info{
+	background-color: #faf6ec;
+	margin-bottom: 10px;
+	height: auto;
+	border-radius: 5px;
+	padding: 30px;
+}
+.container{
+	margin-bottom: 30px;
+}
+.buscar{
+	margin-bottom: 10px;
+}
+.jumbotron *{
+	color: white;
+}
+.caption{
+ text-align: center;
+}
+.boton-open{
+	width: 90%;
+	font-size: 15px;
+}
+.Tal-Canciones{
+	width: 90% !important;
+	margin: 0 auto;
+	text-align: center;
+}
+.Tal-Canciones td{
+	border-bottom: 1px solid black;
+	width: 25% !important;
+	padding: 5px;
+	margin: 0px !important;
+}
