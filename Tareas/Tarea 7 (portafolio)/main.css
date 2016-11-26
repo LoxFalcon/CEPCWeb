@@ -1,0 +1,66 @@
+html{margin: 0;}
+
+nav{
+	background-color: #009688;
+}
+
+ul{
+	list-style-type: none;
+    margin: 0;
+    padding: 0;
+    overflow: hidden;
+}
+#right{
+	display:inline;
+	float:right;
+}
+li{
+	float: left;
+}
+li a{
+	 display: block;
+    color: white;
+    text-align: center;
+    padding: 14px 16px;
+    text-decoration: none;
+}
+li a:visited{
+	color:white;
+	text-decoration: none;
+}
+li a:hover{
+	color:#E0E0E0;
+	text-decoration: none;
+}
+
+header{
+	background-color: #009688;
+	color: white;
+	text-align: center;
+	padding: 70px;
+}
+
+section{
+	padding-top: 50px;
+	padding-bottom: 50px;
+}
+
+footer{
+	height: 300px;
+	background-color: #616161;
+}
+
+.post-footer{
+	height: 50px;
+	background-color: #212121;
+}
+
+.titulo2{
+	padding-top: 10px;
+	padding-bottom: 40px;
+}
+
+#services{
+	background-color: #ECEFF1;
+	text-align: center;
+}
