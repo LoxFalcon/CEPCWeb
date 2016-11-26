@@ -1,0 +1,45 @@
+.jumbotron{
+	margin-top: -30px;
+	background-image: url("bb.png");
+	height: 300px;
+	background-size: cover;
+
+}
+body{
+	background-image: url("tx.png");
+	background-color: #004a31;
+}
+
+input{
+	width: 100%;	
+}
+.escondido
+{
+	display:none;
+}
+.info{
+	background-color: #faf6ec;
+	margin-bottom: 10px;
+	height: auto;
+	border-radius: 5px;
+	padding: 30px;
+}
+.container{
+	margin-bottom: 30px;
+}
+.buscar{
+	margin-bottom: 10px;
+}
+.jumbotron *{
+	color: white;
+}
+.caption{
+ text-align: center;
+}
+.boton-open{
+	width: 90%;
+	font-size: 15px;
+}
+#breadCrumbs{
+	display:inline;
+}
